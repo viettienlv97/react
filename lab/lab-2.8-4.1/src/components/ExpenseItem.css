@@ -1,0 +1,10 @@
+.expense-item {
+  background-color: gray;
+  border-radius: 8px;
+}
+
+.expense-amount {
+  border-radius: 8px;
+  border: 1px solid white;
+  background-color: rgb(86, 0, 167);
+}

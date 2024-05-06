@@ -1,0 +1,10 @@
+const JSX = (
+  <div>
+    <h1>Hello World</h1>
+    <p>Lets render this to the DOM</p>
+  </div>
+);
+// Add your code below this line
+const node = document.getElementById('challenge-node')
+// ReactDOM.render(componentToRender, targetNode)
+ReactDOM.render(JSX, node)
