@@ -1,0 +1,21 @@
+.task {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.task:last-of-type {
+  border-bottom: none;
+}
+
+.item {
+  display: flex;
+}
+.item span {
+  flex-grow: 1;
+}
+
+.done {
+  text-decoration: line-through;
+}

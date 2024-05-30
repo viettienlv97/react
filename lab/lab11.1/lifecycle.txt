@@ -1,0 +1,45 @@
+
+## Class Component
+
+import {Component} from 'react'
+
+class ParentComponet extends Component {}
+  constructor() {
+    super()
+    this.state = {
+      parentState: 'something'
+    }
+  }
+  
+  - constructor là 1 hàm khởi tạo các giá trị bên trong class, nhận vào 1 tham số là props của Component đó.
+    bên trong constructor sẽ chạy hàm super(), 
+    khai báo this.state = {key: value} tương tự const [key, setKey] = useState(value)
+  
+  constructor(props) {
+    super()
+    this.state = {key: value}
+  }
+  
+  - componentDidMount là 1 hàm tương tự useEffect khi mảng dependencies rỗng, hàm sẽ chạy lần đầu sau khi mount
+    Component
+  
+  componentDidMount() {
+    this.setState() là 1 hàm để thay đổi giá trị state của Component
+    this.setState({key: newValue})
+  }
+  
+  - componentDidUpdate là 1 hàm tương tự useEffect khi mảng dependencies đang có giá trị phụ thuộc
+    hàm sẽ nhận vào 2 tham số là prevProps và prevState, ta cần tự kiểm tra giá trị cũ và mới để sử dụng hàm này
+    nếu không kiểm tra cẩn thận có thể gây ra vòng lặp vô hạn.
+  
+  componentDidUpdate(prevProps, prevState) {
+    kiểm tra giá trị state cũ và giá trị state mới sau khi chạy setStatesetState
+    if (prevState.key !== this.state.key) {
+      // do something
+    }
+  }
+  
+  componentWillUnmount là hàm tương tự hàm cleanup của useEffect
+  
+  componentWillUnmount () {
+  }

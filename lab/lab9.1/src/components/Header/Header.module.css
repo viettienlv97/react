@@ -1,0 +1,30 @@
+.bgRedBrown {
+  background-color: #8a2b06;
+}
+.bgBrown {
+  background-color: #4d1601;
+}
+.bgOrange{
+  background-color: #b94517;
+}
+
+.bgImg {
+  background-image: url('../../assets/meals.jpg');
+  background-repeat: no-repeat;
+  height: 300px;
+  width: 100vw;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+.bgImg::before {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 80px;
+  background-color: #3f3f3f;
+  /* background-color: white; */
+  bottom: -60px;
+  transform: rotateZ(-3deg);
+}

@@ -1,0 +1,2 @@
+Virtual DOM là DOM ảo lưu trữ trong bộ nhớ, công việc của nó là render ra DOM thật khi bắt đầu mở trang web,
+và mỗi khi ta thực hiện tác vụ, DOM ảo sẽ re-render, so sánh với chính nó và đẩy sang DOM thật.

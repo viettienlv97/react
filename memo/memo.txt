@@ -1,0 +1,13 @@
+sử dụng memo để tránh việc component con re-render khi component cha re-render
+bằng cách kiểm tra props có thay đổi hay không.
+memo không quan tâm đến state bên trong component con, chỉ quan tâm đến props của nó.
+
+Không nên lạm dụng memo()
+- Nên sử dụng nó cho các components trên cao nhất
+-> Tránh được việc tất cả các component con re-render.
+
+- Nếu sử dụng memo() trên tất cả các component, react sẽ phải check tất cả các props có memo()
+-> Rất tốn kém performance, nó chỉ thêm việc checking thừa thãi.
+
+- Không sử dụng memo() cho các component mà chúng thường xuyên update các props
+-> Chắc chắn chúng sẽ re-render lại nên việc kiểm tra props là không cần thiết, cứ để nó re-render đi
