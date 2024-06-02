@@ -7,7 +7,6 @@ const defaultMovieState = {
 }
 const movieReducer = (state, action) => {
   if (action.type === 'SELECT') {
-    console.log(action)
     return action.payload
   }
   return defaultMovieState

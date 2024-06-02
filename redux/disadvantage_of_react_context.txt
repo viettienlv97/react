@@ -1,0 +1,23 @@
+Nhược điểm của React Context:
++ Setup và quản lý phức tạp:
+  - Nếu sử dụng quá nhiều Context trong 1 app thì sẽ phải 
+  tạo quá nhiều provider lồng nhau
+  VD: return (
+    <AuthContextProvider>
+      <ThemeContextProvider>
+        <UIInteractionContextProvider>
+          <MultiStepFormContextProvider>
+            <UserRegistration />
+          </MultiStepFormContextProvider>
+        </UIInteractionContextProvider>
+      </ThemeContextProvider>
+    </AuthContextProvider>
+  )
+
+  - Nếu không muốn lồng nhiều provider thì trong 1 provider
+  sẽ phải xử lý quá nhiều logic.
+-> Tóm lại trong 1 app lớn và phức tạp, sử dụng React Context
+có thể dẫn đến các component provider lồng nhau rất LỚN.
+
++ Hiệu suất:
+-> React Context không được tối ưu hoá cho các thay đổi tần số cao.

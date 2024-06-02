@@ -1,0 +1,6 @@
++ Sử dụng 1 [Central Data (State) Store] duy nhất.
++ [Component] sử dụng các State thông qua [Subscription]
++ [Component] gọi [dispatch] để gọi đến [Action]
++ [Action] gọi đến [Reducer Function]
++ [Reducer Function] thay đổi trạng thái của data thông qua
+[Mutates (= change) data in Store]

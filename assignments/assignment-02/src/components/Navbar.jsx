@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Search } from 'react-feather'
 import { Link } from 'react-router-dom'
 import BackgroundScroll from './UI/BackgroundScroll'
 
-const Navbar = () => {
+const Navbar = memo(() => {
   return (
     <nav className='fixed-top'>
       <BackgroundScroll>
@@ -15,17 +15,20 @@ const Navbar = () => {
             >
               Movie App
             </Link>
-            <div role='button'>
+            <Link
+              role='button'
+              to={'/search'}
+            >
               <Search
                 className='text-gray fw-bold fs-4'
                 size={32}
               />
-            </div>
+            </Link>
           </div>
         </div>
       </BackgroundScroll>
     </nav>
   )
-}
+})
 
 export default Navbar

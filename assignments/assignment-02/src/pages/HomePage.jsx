@@ -1,9 +1,9 @@
-import React from 'react'
 import Header from '../components/Header'
 import MoviesList from '../components/UI/MoviesList'
-import { requests } from '../services/apiService'
+import { requests, apiUrl } from '../services/apiService'
 import MovieProvider from '../store/MovieProvider'
 
+// khai báo list các danh mục phim
 const movies_categories = [
   {
     id: 1,
@@ -66,9 +66,12 @@ const movies_categories = [
 const HomePage = () => {
   return (
     <>
+      {/* Header bao gồm Navbar và Banner */}
       <Header />
+      {/* MovieProvider cho phép sử dụng MovieContext trong các component con */}
       <MovieProvider>
         <main className='pb-5'>
+          {/* từ list các danh mục render ra các MoviesList */}
           {movies_categories.map((cate) => {
             return (
               <section
@@ -78,7 +81,7 @@ const HomePage = () => {
                 <MoviesList
                   imgType={cate.imgType}
                   title={cate.title}
-                  url={cate.url}
+                  url={`${apiUrl}${cate.url}`}
                   id={cate.id}
                 />
               </section>

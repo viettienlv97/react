@@ -1,0 +1,18 @@
+const reducer = (state = 5) => {
+  return state;
+}
+
+const store = Redux.createStore(reducer)
+
+// const getState = () => {
+//   const latestState = store.getState()
+//   return latestState
+// }
+
+// store.subscribe(getState)
+
+// store.dispatch({type: 'getState'})
+
+// Redux methods are available from a Redux object
+// For example: Redux.createStore()
+// Define the store here:

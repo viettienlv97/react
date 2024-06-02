@@ -6,6 +6,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* tạo 2 route để chuyển đổi giữa HomePage và SearchPage */}
         <Route
           path='/'
           element={<HomePage />}

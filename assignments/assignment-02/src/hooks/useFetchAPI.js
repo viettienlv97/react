@@ -1,37 +1,40 @@
-import { useEffect, useState } from 'react'
-import { requestOptions, apiUrl } from '../services/apiService'
+import { useEffect, useState, useCallback } from 'react'
+import { requestOptions } from '../services/apiService'
 
-const useFetchAPI = (url, initialData, movieAPI) => {
+const useFetchAPI = (
+  url,
+  options = { autoFetch: false, initialData: null }
+) => {
+  const { autoFetch, initialData } = options
   const [data, setData] = useState(initialData)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true)
     try {
-      const response = await fetch(
-        url ? apiUrl + url : movieAPI,
-        requestOptions
-      )
+      const response = await fetch(url, requestOptions)
       if (!response.ok) {
         throw new Error(response)
       }
 
       const data = await response.json()
-      console.log(data)
       setData(data)
     } catch (error) {
+      setData(initialData)
       setError(error)
     } finally {
       setLoading(false)
     }
-  }
-
-  useEffect(() => {
-    fetchData()
   }, [url])
 
-  return { data, loading, error }
+  useEffect(() => {
+    if (autoFetch) {
+      fetchData()
+    }
+  }, [url, autoFetch])
+
+  return { data, loading, error, fetchData }
 }
 
 export default useFetchAPI

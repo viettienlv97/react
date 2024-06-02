@@ -6,13 +6,23 @@ import { useContext } from 'react'
 import MovieContext from '../../store/movie-context'
 
 const SwiperCarousel = ({ slider, imgType, listId }) => {
-  const { selectMovie } = useContext(MovieContext)
+  // sử dụng MovieContext
+  const { movie, selectMovie } = useContext(MovieContext)
   const isPoster = imgType === 'poster_path' ? true : false
   const imgSize = {
     width: isPoster ? 170 : 250,
     height: isPoster ? 250 : 150
   }
+
+  // hàm selectmovie để chọn phim lưu vào MovieContext
+  const handleSelectMovie = (data) => {
+    if (!movie || movie.id !== data.movie.id) selectMovie(data)
+    else {
+      selectMovie({ movie: null, listId: null })
+    }
+  }
   return (
+    // sử dụng thư viện Swiper để render ra list phim có thể drag theo chiều ngang
     <Swiper
       className='mySwiper position-relative'
       autoplay={{
@@ -22,18 +32,22 @@ const SwiperCarousel = ({ slider, imgType, listId }) => {
       modules={[Autoplay]}
       breakpoints={{
         0: {
-          slidesPerView: 1,
-          spaceBetween: 0
+          slidesPerView: isPoster ? 2 : 1.5,
+          spaceBetween: 10
         },
         576: {
-          slidesPerView: 1,
-          spaceBetween: 0
+          slidesPerView: isPoster ? 3 : 2,
+          spaceBetween: 10
         },
         768: {
-          slidesPerView: 3,
-          spaceBetween: 0
+          slidesPerView: isPoster ? 4 : 3,
+          spaceBetween: 10
         },
         1024: {
+          slidesPerView: isPoster ? 6 : 4,
+          spaceBetween: 10
+        },
+        1200: {
           slidesPerView: isPoster ? 10 : 7,
           spaceBetween: 10
         }
@@ -44,7 +58,7 @@ const SwiperCarousel = ({ slider, imgType, listId }) => {
           <SwiperSlide
             role='button'
             key={item.id}
-            onClick={() => selectMovie({ movie: item, listId })}
+            onClick={() => handleSelectMovie({ movie: item, listId })}
           >
             <img
               className='swiper-img'

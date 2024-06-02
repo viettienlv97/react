@@ -12,6 +12,19 @@
 // @import './column.scss';
 @import './color.scss';
 
+$utilities: map-merge(
+  $utilities,
+  (
+    'width':
+      map-merge(
+        map-get($utilities, 'width'),
+        (
+          responsive: true
+        )
+      )
+  )
+);
+
 // .bg-dark-blue {
 //   background-color: $dark-blue !important;
 // }
@@ -21,6 +34,7 @@
 }
 #root {
   background-color: $dark;
+  min-height: 100vh;
 }
 
 .swiper-slide {
