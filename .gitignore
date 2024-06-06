@@ -2,3 +2,5 @@
 /lab/lab5.1/node_modules
 /assignments/*.zip
 /assignments/*.rar
+/router/react-router-advanced/backend/node_modules/
+/router/react-router-advanced/frontend/node_modules/
