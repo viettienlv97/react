@@ -1,12 +1,12 @@
 import React from 'react'
 import MainNavigation from './MainNavigation'
-import { Outlet } from 'react-router-dom'
+import {Outlet} from 'react-router-dom'
 import classes from './Layout.module.css'
 
 const Layout = () => {
   return (
     <>
-      {/* <MainNavigation /> */}
+      <MainNavigation />
       <main className={classes.main}>
         <Outlet />
       </main>
