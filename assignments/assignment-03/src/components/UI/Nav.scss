@@ -1,0 +1,13 @@
+@import '../../scss/custom.scss';
+.navlink {
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    color: $nav-active;
+  }
+
+  &.active {
+    color: $nav-active;
+  }
+}
