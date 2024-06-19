@@ -1,7 +1,17 @@
 import React from 'react'
+import BannerShop from '../components/banner/BannerShop'
+import Checkout from '../components/checkout/Checkout'
 
 const CheckoutPage = () => {
-  return <div>CheckoutPage</div>
+  return (
+    <main>
+      <BannerShop
+        title={'CHECKOUT'}
+        subtitle={['HOME / CART', ' / CHECKOUT']}
+      />
+      <Checkout />
+    </main>
+  )
 }
 
 export default CheckoutPage

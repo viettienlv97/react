@@ -3,6 +3,10 @@
   text-decoration: none;
   color: black;
 
+  &.light {
+    color: $light;
+  }
+
   &:hover {
     color: $nav-active;
   }

@@ -5,7 +5,7 @@ import ProductsList from '../components/shop/ProductsList'
 const ShopPage = () => {
   return (
     <main>
-      <BannerShop />
+      <BannerShop title={'SHOP'} />
       <ProductsList />
     </main>
   )

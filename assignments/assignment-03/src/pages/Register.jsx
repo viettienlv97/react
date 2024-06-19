@@ -1,7 +1,13 @@
 import React from 'react'
+import UserForm from '../components/auth/UserForm'
+import RegisterForm from '../components/auth/RegisterForm'
 
 const RegisterPage = () => {
-  return <div>RegisterPage</div>
+  return (
+    <UserForm>
+      <RegisterForm />
+    </UserForm>
+  )
 }
 
 export default RegisterPage

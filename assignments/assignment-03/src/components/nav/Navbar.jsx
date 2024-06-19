@@ -1,9 +1,20 @@
-import {NavLink} from 'react-router-dom'
-import {ShoppingCart, User} from 'react-feather'
+import { NavLink } from 'react-router-dom'
+import { ShoppingCart, User } from 'react-feather'
 import Nav from '../UI/Nav'
 import Dropdown from '../UI/Dropdown'
+import { useDispatch, useSelector } from 'react-redux'
+import { authActions } from '../../store/auth'
+import { removeItem } from '../../utils/storage'
 
 const Navbar = () => {
+  const auth = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    dispatch(authActions.clearAuth())
+    removeItem('user')
+  }
+
   return (
     <nav>
       <div className='container d-flex justify-content-between'>
@@ -26,33 +37,40 @@ const Navbar = () => {
           <li className='me-3'>
             <Nav linkTo='/cart'>
               <i className='fw-bold'>
-                <ShoppingCart size={20} className='me-2' />
+                <ShoppingCart
+                  size={20}
+                  className='me-2'
+                />
                 Cart
               </i>
             </Nav>
           </li>
-          {false && (
+          {!auth && (
             <li>
               <Nav linkTo='/login'>
                 <i className='fw-bold'>Login</i>
               </Nav>
             </li>
           )}
-          {true && (
+          {auth && (
             <li className='me-2'>
               <div className='d-flex'>
                 <Dropdown>
                   <User />
-                  <i className='fw-bold'>Viettien</i>
+                  <i className='fw-bold'>{auth.fullName}</i>
                 </Dropdown>
               </div>
             </li>
           )}
-          {true && (
+          {auth && (
             <li>
-              <Nav linkTo='/logout'>
+              <a
+                className='navlink'
+                onClick={handleLogout}
+                role='button'
+              >
                 <i className='fw-bold'>(Logout)</i>
-              </Nav>
+              </a>
             </li>
           )}
         </ul>

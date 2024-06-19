@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 const useFetch = (url, initialData) => {
   const [loading, setLoading] = useState(false)
@@ -22,7 +22,7 @@ const useFetch = (url, initialData) => {
     }
   }
 
-  return {data, error, loading, fetchData}
+  return { data, setData, error, loading, fetchData }
 }
 
 export default useFetch

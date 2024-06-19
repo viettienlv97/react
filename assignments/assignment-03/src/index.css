@@ -64,3 +64,17 @@
   font-weight: 900;
   font-style: italic;
 }
+
+.no-highlight {
+  user-select: none; /* CSS3 */
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-select: none; /* Safari, Chrome */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}

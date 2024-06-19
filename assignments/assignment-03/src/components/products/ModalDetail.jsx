@@ -2,6 +2,7 @@ import React from 'react'
 import { ShoppingCart, X } from 'react-feather'
 import { useSelector } from 'react-redux'
 import { formattedPrice } from '../../utils/helper'
+import { Link } from 'react-router-dom'
 
 const ModalDetail = ({ onClose }) => {
   const product = useSelector((state) => state.product.product)
@@ -10,7 +11,11 @@ const ModalDetail = ({ onClose }) => {
     <div className='position-relative'>
       <div className='row'>
         <div className='col-7'>
-          <img src={product.img1} alt='' className='w-100' />
+          <img
+            src={product.img1}
+            alt=''
+            className='w-100'
+          />
         </div>
         <div className='col-5'>
           <div className='my-4 me-4 ps-3'>
@@ -22,9 +27,14 @@ const ModalDetail = ({ onClose }) => {
               {product.short_desc}
             </p>
           </div>
-          <button className='btn bg-btn-black rounded-0 text-light px-4'>
-            <ShoppingCart className='me-2' />
-            View Detail
+          <button className='btn bg-btn-black rounded-0 px-4'>
+            <Link
+              className='text-decoration-none text-light'
+              to={`/detail/${product._id.$oid}`}
+            >
+              <ShoppingCart className='me-2' />
+              View Detail
+            </Link>
           </button>
         </div>
       </div>

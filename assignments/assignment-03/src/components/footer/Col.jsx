@@ -1,4 +1,4 @@
-const Col = ({title, links}) => {
+const Col = ({ title, links }) => {
   return (
     <div className='my-5'>
       <h5 className='mb-3'>
@@ -6,8 +6,14 @@ const Col = ({title, links}) => {
       </h5>
       {links.map((link) => {
         return (
-          <div key={link} className='lato-light-italic text-gray'>
-            <a href='#' className='text-decoration-none text-light'>
+          <div
+            key={link}
+            className='lato-light-italic text-gray'
+          >
+            <a
+              href='#'
+              className='navlink light'
+            >
               {link}
             </a>
           </div>

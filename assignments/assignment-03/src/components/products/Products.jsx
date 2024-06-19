@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import useFetch from '../../hooks/useFetch'
+import React, { useState } from 'react'
 import Product from './Product'
 import ProductModal from '../modal/ProductModal'
 import ModalDetail from './ModalDetail'
 import { useDispatch } from 'react-redux'
 import { productActions } from '../../store/product.js'
-import { listUrl } from '../../utils/apiUrl.js'
+import useGetProducts from '../../hooks/useGetProducts.js'
 
 const Products = () => {
-  const { data, error, loading, fetchData } = useFetch(listUrl, [])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const dispatch = useDispatch()
+  const { products, loading, error } = useGetProducts()
 
-  useEffect(() => {
-    if (!data || !data.length) {
-      fetchData()
-    }
-  }, [])
   const openModal = (product) => {
-    console.log('open')
     dispatch(productActions.setProduct(product))
     setIsModalOpen(true)
   }
 
   const closeModal = () => {
-    console.log('close')
     dispatch(productActions.removeProduct())
     setIsModalOpen(false)
   }
@@ -41,21 +33,25 @@ const Products = () => {
           </h5>
         </div>
         {loading && <p>Loading...</p>}
-        {!loading && data && data.length && (
+        {!loading && products && products.length && (
           <>
             <div className='row g-5'>
-              {data.map((product) => {
+              {products.map((product) => {
                 return (
                   <Product
                     key={product._id.$oid}
                     product={product}
-                    openModal={openModal}
+                    selectProduct={openModal}
+                    className={'col-3'}
                   />
                 )
               })}
             </div>
 
-            <ProductModal isOpen={isModalOpen} onClose={closeModal}>
+            <ProductModal
+              isOpen={isModalOpen}
+              onClose={closeModal}
+            >
               <ModalDetail onClose={closeModal} />
             </ProductModal>
           </>

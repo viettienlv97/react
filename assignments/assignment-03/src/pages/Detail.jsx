@@ -1,7 +1,16 @@
 import React from 'react'
+import { useParams, useHref } from 'react-router-dom'
+import BannerShop from '../components/banner/BannerShop'
+import ProductDetail from '../components/detail/ProductDetail'
 
 const DetailPage = () => {
-  return <div>DetailPage</div>
+  const params = useParams()
+  return (
+    <main>
+      <BannerShop title={'DETAIL'} />
+      <ProductDetail productId={params['product-id']} />
+    </main>
+  )
 }
 
 export default DetailPage

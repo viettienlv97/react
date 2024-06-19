@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
 import { formattedPrice } from '../../utils/helper'
 
-const Product = ({ product, openModal }) => {
+const Product = ({ product, className, selectProduct }) => {
   return (
-    <div className='col-3' role='button' onClick={() => openModal(product)}>
-      <img src={product.img1} alt='' className='w-100 product-img' />
+    <div
+      className={className}
+      role='button'
+      onClick={() => selectProduct(product)}
+    >
+      <img
+        src={product.img1}
+        alt=''
+        className='w-100 product-img'
+      />
       <div className='text-center mt-4'>
         <h6 className='fw-bold'>
           <i>{product.name}</i>

@@ -1,11 +1,3 @@
-@mixin text-colors($colors) {
-  @each $colorName, $color-value in $colors {
-    .text-#{$colorName} {
-      color: $color-value !important;
-    }
-  }
-}
-
 $colors: (
   'red': $red,
   'purple': $purple,
@@ -13,9 +5,15 @@ $colors: (
   'gray': $gray-500,
   'dark': $gray-700,
   'black': $black,
-  'btn-black': $btn-black,
+  'btn-black': $btn-black
 );
-
+@mixin text-colors($colors) {
+  @each $colorName, $color-value in $colors {
+    .text-#{$colorName} {
+      color: $color-value !important;
+    }
+  }
+}
 @include text-colors($colors);
 
 @mixin background-colors($colors) {
@@ -26,3 +24,12 @@ $colors: (
   }
 }
 @include background-colors($colors);
+
+@mixin border-colors($colors) {
+  @each $colorName, $color-value in $colors {
+    .border-#{$colorName} {
+      border-color: $color-value !important;
+    }
+  }
+}
+@include border-colors($colors);
