@@ -16,6 +16,7 @@ const Detail = ({ product }) => {
   }, [product])
 
   useEffect(() => {}, [cartState])
+  console.log(cartState);
 
   const handleAddToCart = (e) => {
     e.preventDefault()
