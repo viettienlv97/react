@@ -1,5 +1,6 @@
 /node_modules/
 /lab/lab5.1/node_modules
+/lab/lab14.2/node_modules
 /assignments/*.zip
 /assignments/*.rar
 /router/react-router-advanced/backend/node_modules/

@@ -246,3 +246,26 @@ REACT
         export default store
 
 + React-router-dom
+  - Là thư viện quản lý điều hướng trong ứng dụng React.
+  - Cho phép ta điều hướng giữa các trang hoặc chế độ xem khác nhau trong ứng dụng 1 cách mượt mà mà không cần tải lại trang.
+
+  - Ví dụ:
+    const router = createBrowserRouter([
+      {
+        path: '/',
+        element: <Layout />,
+        children: [
+          { index: true, element: <HomePage /> },
+          { path: 'shop', element: <ShopPage /> },
+          { path: 'detail/:product-id', element: <DetailPage /> },
+          { path: 'cart', element: <CartPage /> },
+          { path: 'checkout', element: <CheckoutPage /> }
+        ]
+      },
+      { path: 'login', element: <LoginPage /> },
+      { path: 'register', element: <RegisterPage /> }
+    ])
+
+    const App = () => {
+      return <RouterProvider router={router} />
+    }
