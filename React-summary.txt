@@ -19,8 +19,14 @@ REACT
   - Viết tắt của properties, dùng để truyền dữ liệu từ Component cha sang Component con.
   - Props là immutable (không thay đổi), tức là component con không thể thay đổi giá trị của props, chỉ thay đổi trong component cha.
 
++ Ref:
+  - Là 1 hook cho phép truy cập trực tiếp vào DOM hoặc các thành phần con của nó.
+  - Được sử dụng khi cần thao tác trực tiếp với 1 phần tử DOM, ví dụ focus thẻ input, đo lường kích thước hoặc vị trí của phần tử DOM.
+
 + Lifecycle Methods:
   - Là các phương thức để thực hiện tác vụ trong giai đoạn khác nhau của vòng đời của 1 component.
+  - Hỗ trợ để chạy mã vào những thời điểm cụ thể trong quá trình tồn tại của component.
+  - Quản lý các state, tối ưu hiệu suất và thực hiện các tác vụ như call API, cleanup function.
   - Class Component Lifecycle Methods:
     -> Mounting (Giai đoạn mount):
       * constructor(props) {
@@ -100,8 +106,11 @@ REACT
         }, [count]) // Runs when count change
 
         useEffect với dependency array []: Chạy 1 lần khi component mount (componentDidMount)
+          -> thực hiện các tác vụ thay đổi UI, state, call API, đăng ký eventListener,...
         useEffect với dependency array [dependency]: Chạy khi dependency thay đổi (componentDidUpdate)
+          -> thực hiện các tác vụ thay đổi state, UI,...
         useEffect với Cleanup function: Cleanup được gọi trước khi component unmount hoặc trước khi chạy lại hiệu ứng (componentWillUnmount)
+          -> thực hiện các tác vụ như cleanup eventListener,...
 
 + Performance Methods:
   - Function Component:
@@ -113,6 +122,7 @@ REACT
 
     useCallback()
       - Giữ lại phiên bản của hàm giữa các lần render để tránh việc tạo hàm mới không cần thiết.
+      - Là 1 hàm xử lý các tác vụ và có props hoặc state phụ thuộc.
       const memolizedCallback = useCallback(() => {
         // Hàm này chỉ thay đổi khi someProp thay đổi
         console.log(someProp)
@@ -120,6 +130,7 @@ REACT
 
     useMemo()
       - Lưu lại giá trị tính toán để tránh việc tính toán lại giá trị nếu dependencies không thay đổi.
+      - Là 1 biến giá trị bình thường được trả về tính toán theo props hoặc state.
       const memolizedValue = useMemo(() => {
         return someExpensiveCalculation(someProp)
       }, [someProp])
@@ -169,6 +180,11 @@ REACT
     -> Selector:
       - Một function để truy vấn và lấy dữ liệu từ state.
       - Selector giúp giảm phụ thuộc vào cấu trúc của state và cải thiện khả năng tái sử dụng code.
+    -> Middleware:
+      - Cầu nối giữa dispatch và action trong redux.
+      - Có thể call API, thực hiện các tác vụ không đồng bộ như fetch,...
+      - Logging: 
+      - Điều chỉnh action: Thay đổi hoặc lọc các hành động trước khi chúng đến reducers.
 
   - Ví dụ: 
       actions.js
