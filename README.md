@@ -271,50 +271,58 @@
 - Ví dụ:
 
 ```js
-  `actions.js`
-    export const increment = () => ({type: 'INCREMENT'})
-    export const decrement = () => ({type: 'DECREMENT'})
+;`actions.js`
+export const increment = () => ({ type: 'INCREMENT' })
+export const decrement = () => ({ type: 'DECREMENT' })
+```
 
-  `reducer.js`
-    const initialState = {count: 0}
-    const counterReducer = (state = initialState, action) => {
-      switch(action.type) {
-        case 'INCREMENT':
-          return {...state, count: state.count + 1}
-        case 'DECREMENT':
-          return {...state, count: state.count - 1}
-        default:
-          return state
-      }
-    }
-    export default counterReducer
+```js
+;`reducer.js`
+const initialState = { count: 0 }
+const counterReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { ...state, count: state.count + 1 }
+    case 'DECREMENT':
+      return { ...state, count: state.count - 1 }
+    default:
+      return state
+  }
+}
+export default counterReducer
+```
 
-  `store.js`
-    import {createStore} from 'redux'
-    import counterReducer from './reducer'
-    const store = createStore(counterReducer)
-    export default store
+```js
+;`store.js`
+import { createStore } from 'redux'
+import counterReducer from './reducer'
+const store = createStore(counterReducer)
+export default store
+```
 
-  `App.jsx`
-    import {Provider, useSelector, useDispatch} from 'react-redux'
-    import store from './store'
-    import {increment, decrement} from './action'
+```js
+;`App.jsx`
+import { Provider, useSelector, useDispatch } from 'react-redux'
+import store from './store'
+import { increment, decrement } from './action'
 
-    const Counter = () => {
-      const count = useSelector((state) => state.count)
-      const dispatch = useDispatch()
-      return <div>
-        <h1>{count}</h1>
-        <button onClick={() => dispatch(increment())}>Increment</button>
-        <button onClick={() => dispatch(decrement())}>Decrement</button>
-      </div>
-    }
-    const App = () => {
-      <Provider store={store}>
-        <Counter />
-      </Provider>
-    }
-    export default App
+const Counter = () => {
+  const count = useSelector((state) => state.count)
+  const dispatch = useDispatch()
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => dispatch(increment())}>Increment</button>
+      <button onClick={() => dispatch(decrement())}>Decrement</button>
+    </div>
+  )
+}
+const App = () => {
+  ;<Provider store={store}>
+    <Counter />
+  </Provider>
+}
+export default App
 ```
 
 **- Redux-toolkit:**
@@ -339,7 +347,11 @@ const counterSlice = createSlice({
   }
 })
 export const counterActions = counterSlice.actions
-export const counterReducer = counterSlice.reducer`store.js`
+export const counterReducer = counterSlice.reducer
+```
+
+```js
+;`store.js`
 const store = configureStore({
   reducer: {
     count: counterReducer
